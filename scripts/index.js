@@ -20,4 +20,25 @@ let login = function (email, password) {
         });
 }
 
+let register = function (email, password) {
+    const url = "https://strippenkaart.collinfranckena.com/api/v1/register";
+    let data = {
+        "email": email,
+        "password": password
+    }
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-type": 'application/json'
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
 

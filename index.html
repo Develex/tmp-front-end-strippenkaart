@@ -84,11 +84,20 @@
             <table id="userTable">
             </table>
         </div>
+        <div class="card-header">Registration</div>
     </div>
     <div id="strips" class="card w-100 mt-5">
         <div class="card-header">Strippenkaarten</div>
         <div class="card-body">
-
+            <form method="POST" id="registrationForm">
+                <label for="registrationEmail">Email:</label>
+                <input class="form-control" type="text" id="registrationEmail"/>
+                <label for="registrationPassword1">Password:</label>
+                <input class="form-control" type="password" id="registrationPassword1"/>
+                <label for="registrationPassword2">Retype Password:</label>
+                <input class="form-control" type="password" id="registrationPassword2"/>
+                <input class="btn btn-success" type="submit" id="registrationSubmit">
+            </form>
         </div>
     </div>
     <div id="requests" class="card w-100 mt-5">
@@ -117,6 +126,13 @@
             e.preventDefault();
 
             login($('#loginEmail').val(), $('#loginPassword').val());
+        })
+
+        $("#registrationForm").submit(function (e) {
+            e.preventDefault();
+            if ($("#registrationPassword1").val() === $("#registrationPassword2").val()) {
+                register($('#registrationEmail').val(), $("#registrationPassword1").val());
+            }
         })
     });
 </script>
