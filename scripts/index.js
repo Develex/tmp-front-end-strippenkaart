@@ -1,5 +1,8 @@
+const baseUrl = "http://127.0.0.1:8000/api/v1/";
+// const baseUrl = "https://strippenkaart.collinfranckena.com/api/v1/";
+
 let login = function (email, password) {
-    let url = "https://strippenkaart.collinfranckena.com/api/v1/login";
+    let url = baseUrl + "login";
     let auth = 'Basic ' + btoa(email + ":" + password);
     console.log(auth);
 
@@ -7,7 +10,7 @@ let login = function (email, password) {
         method: 'POST',
         headers: {
             'Authorization': auth,
-            'Content-type': 'application/json'
+            'Content-Type': 'application/json'
         },
     })
         .then(response => response.json())
@@ -21,16 +24,16 @@ let login = function (email, password) {
 }
 
 let register = function (email, password) {
-    const url = "https://strippenkaart.collinfranckena.com/api/v1/register";
+    const url = baseUrl + "register";
     let data = {
         "email": email,
         "password": password
     }
     fetch(url, {
         method: "POST",
-        headers: {
-            "Content-type": 'application/json'
-        },
+        // headers: {
+        //     "Content-type": 'application/json'
+        // },
     })
         .then(response => response.json())
         .then(data => {
